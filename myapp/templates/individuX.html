@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %} Personnels {% endblock %}
+
+{% block body_block %}
+{% load static %}
+
+ <img src="{% static 'images/image1.jpg' %}" height="250" width="500"> 
+ <img src="{% static 'images/image2.jpg' %}" height="250" width="500"> 
+
+
+<h5><a href="{% url 'individuajouter' %}">Ajouter individu</a></h5>
+
+<table class="table table-striped"> 
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Modifications</th>
+                <th>Suppressions</th> 
+
+
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            
+            <tr>
+                <th scope="row">{{ individu.id }}</th>
+                <td> {{ individu.nom }} </td>   
+                <th scope="row">{{ individu.prenom }}</th>
+                <th scope="row">{{ individu.email }}</th>     
+                <th scope="row"><a href = "individumodifier/{{individu.id}}">Modifier</a></th>      
+                <th scope="row"><a href = "individusupprimer/{{individu.id}}">Supprimer</a> </th>      
+
+                
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+{% endblock %}

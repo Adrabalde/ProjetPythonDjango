@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %} Personnels {% endblock %}
+
+{% block body_block %}
+{% load static %}
+
+<img src="{% static 'images/image1.jpg' %}" height="152" width="470">
+<img src="{% static 'images/image2.jpg' %}" height="152" width="470">
+
+<p style="text-align:left">
+FILTRER PAR : <input type="text" id="myInput1" onkeyup="filtreMyTable('myTable','myInput1', 0)" placeholder="NOM">
+</p>
+<table class="table table-striped"> 
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>LIBELLE</th>
+                <th>NB_H_MIN</th>
+                <th>NB_H_MAX</th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            {% for statut in statuts %}
+            <tr>
+                <th scope="row">{{ statut.id }}</th>
+                <td><a href="/statut/{{ statut.ID }}">{{ statut.libelle }}</a> </td> 
+                <td>{{ statut.nb_h_min }}</td>
+                <td>{{ statut.nb_h_max }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

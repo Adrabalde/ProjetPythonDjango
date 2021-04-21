@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %} Personnels {% endblock %}
+
+{% block body_block %}
+{% load static %}
+
+ <img src="{% static 'images/image1.jpg' %}" height="250" width="500"> 
+ <img src="{% static 'images/image2.jpg' %}" height="250" width="500"> 
+
+<p style="text-align:left">
+FILTRER PAR : <input type="text" id="myInput1" onkeyup="filtreMyTable('myTable','myInput1', 0)" placeholder="NOM">
+</p>
+<h5><a href="{% url 'individuajouter' %}">Ajouter individu</a></h5>
+<h5 style="float: right "><a href="{% url 'importcsv' %}">Importer des individus via csv</a></h5> 
+<h5 style="float: left "><a href="{% url 'exportcsv' %}">Exporter des individus dans un fichier csv</a></h5> 
+
+<table class="table table-striped"> 
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Modifications</th>
+                <th>Suppressions</th> 
+
+
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            {% for individu in individus %}
+            <tr>
+                <th scope="row">{{ individu.id }}</th>
+                <td><a href="/individuX/{{ individu.id }}">{{ individu.nom }}</a> </td>   
+                <th scope="row">{{ individu.prenom }}</th>
+                <th scope="row">{{ individu.email }}</th>     
+                <th scope="row"><a href = "individumodifier/{{individu.id}}">Modifier</a></th>      
+                <th scope="row"><a href = "individusupprimer/{{individu.id}}">Supprimer</a> </th>      
+
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

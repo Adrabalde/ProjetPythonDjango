@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %} Others {% endblock %}
+
+{% block body_block %}
+<h3>Le nom d'utilisateur est: {{nom}}</h3>
+<h3>Le nom de la personne est: {{perso.nom}}</h3>
+<h3>Le prenom de la personne est: {{perso.prenom}}</h3>
+<h2> Regarder /home
+    <a href="{% url 'homepage'  %}">lien</a>
+</h2>
+
+{% endblock %}

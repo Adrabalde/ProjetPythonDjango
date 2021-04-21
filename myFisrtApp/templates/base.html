@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        {% block title %} Python Project {% endblock %}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"> 
+
+</head>
+
+<body>
+    <center>
+        <div class="container bg-info mb-3">
+            Projet Python Framework Django <br>
+            Abdourahamane BALDE <br>
+            Mamadou Saliou BALDE <br>
+            Yussuf Jalloh <br>
+
+        </div>
+        {% block body_block %}
+        <h1>Bienvenue</h1>
+        <h2> Nous sommes dans la page d'accueil</h2>
+        <h2> Ajouter un individu/
+            <a href="{% url 'individuajouter'  %}">Ajouter</a>
+        </h2>
+        <h2> Ajouter un groupe/
+            <a href="{% url 'groupeajouter'  %}">Ajouter</a>
+        </h2>
+        <h2>La liste des individus/
+            <a href="{% url 'individu'  %}">Afficher</a>
+        </h2>
+        <h2>La liste des groupes/
+            <a href="{% url 'groupe'  %}">Afficher</a>
+        </h2>
+        <h2> Associer un individu à un groupe/
+            <a href="{% url 'associergroupeindividu'  %}">Associer</a>
+        
+        {% endblock %}
+
+    </center>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"> </script>
+<script src="{% static 'js/bootstrap.bundle.js' %}">  </script>
+<script>
+    function filtreMyTable(nameTable, nameInput, index) {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById(nameInput);
+        filter = input.value.toUpperCase();
+        table = document.getElementById(nameTable);
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[index];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+</body>
+
+</html>

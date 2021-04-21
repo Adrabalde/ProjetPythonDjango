@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% if messages %} 
+        {% for message in messages %}
+            <div>
+                <strong>{{message|safe}}</strong>
+            </div>
+        {% endfor %}
+    {% else %}
+    {{order}}
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="file1"> Importer un fichier</label> 
+        <input type="file" id="file1" name="file">
+        <small>Seulement le format CSV est accepté</small>
+        <button type="submit">Importer</button>
+    </form>
+    {% endif %}
+    {% for individu in individus %}
+    {{individu.nom}} 
+    {% endfor %} 
+</body>
+</html>

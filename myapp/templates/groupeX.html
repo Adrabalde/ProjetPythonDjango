@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %} Personnels {% endblock %}
+
+{% block body_block %}
+{% load static %}
+
+<img src="{% static 'images/image1.jpg' %}" height="152" width="470"> 
+<img src="{% static 'images/image2.jpg' %}" height="152" width="470"> 
+
+<p style="text-align:left">
+FILTRER PAR : <input type="text" id="myInput1" onkeyup="filtreMyTable('myTable','myInput1', 0)" placeholder="NOM">
+</p>
+
+<h3><a href = "{% url 'groupeajouter' %}">Ajouter un nouveau groupe </a></h3> 
+<table class="table table-striped"> 
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prenom</th> 
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            {% for indiv in individus %}
+            <tr>
+                <th scope="row">{{ indiv.id }}</th>
+                <th scope="row">{{ indiv.nom }}</th>
+                <th scope="row">{{ indiv.prenom }}</th>   
+                  
+   
+   
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
